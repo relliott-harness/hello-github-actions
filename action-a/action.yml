@@ -1,17 +1,17 @@
-name: "Hello Actions"
-description: "Greet someone"
-author: "octocat@github.com"
-
-inputs:
-  MY_NAME:
-    description: "Who to greet"
-    required: true
-    default: "World"
-
-runs:
-  using: "docker"
-  image: "Dockerfile"
-
+name: "OPA Test"
+description: "Run Open Policy Agent tests"
+author: "Petro Protsakh"
 branding:
-  icon: "mic"
-  color: "purple"
+  icon: check-square
+  color: green
+inputs:
+  tests:
+    description: "Rego file or directory path where to discover tests. Defaults to repository root."
+    required: false
+    default: ./
+  options:
+    description: "Additional OPA command line flags. Example: `--verbose --timeout 3`. See `opa test --help` for more."
+    required: false
+runs:
+  using: docker
+  image: Dockerfile
