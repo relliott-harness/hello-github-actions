@@ -11,7 +11,7 @@ pipelineStages:
   skipCondition:
     type: DO_NOT_SKIP
   stageName: STAGE 1
-  workflowName: Check OPA
+  workflowName: NOT Check OPA
 - type: ENV_STATE
   name: OPA Deploy Svc
   parallel: false
