@@ -11,7 +11,7 @@ deny[reason] {
   # Now the checkfor type = PIPELINE and workflowName != Check OPA
   #type == "PIPELINE"
   #stage1_workflowName != "Check OPA"
-  1 == 1
+  1 != 1
   
   # Set the deny message
   #reason := "All pipelines must have a Stage 1 workflow 'Check OPA' that ensures OPA is running in the target Kubernetes environment."
