@@ -1,10 +1,10 @@
-name: A workflow for my Hello World file
+name: A workflow to OPA validate Harness pipline YAML
 on: push
   paths:
     - './pipelines/*.yaml'
 jobs:
   build:
-    name: Hello world action
+    name: OPA Validate Harness Pipline
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
@@ -12,5 +12,3 @@ jobs:
         with:
           tests: "./rego"
           options: "--verbose"
-      env:
-        EVENT_BEFORE: ${{ github.event.before }}
