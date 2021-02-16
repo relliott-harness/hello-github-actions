@@ -12,5 +12,5 @@ jobs:
         with:
           tests: "./rego"
           options: "--verbose"
-    env:
-      EVENT_BEFORE: ${{ github.event.before }}
+      env:
+        EVENT_BEFORE: ${{ github.event.before }}
