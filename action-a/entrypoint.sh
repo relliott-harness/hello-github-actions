@@ -16,8 +16,7 @@ for line in "${lines[@]}"; do
   cmd="/opa eval -f values -i ./rego/mypipeline.yaml -d ./rego/check-pipeline.rego \"data.harness.pipeline.deny\""
   echo " 🚀 Running: $cmd"
   printf "\n"
-  #eval "$cmd" || e_code=1
-  export OPA_EVAL=`/opa eval -f values -i ./rego/mypipeline.yaml -d ./rego/check-pipeline.rego "data.harness.pipeline.deny"`
+  export OPA_EVAL=`/opa eval -f json -i ./pipelines/opa_deploy_pipeline.yaml -d ./rego/check-pipeline.rego "data.harness.pipeline.deny"`
   echo $OPA_EVAL
   export DENY=`echo $OPA_EVAL | grep -P "All pipeline Stage 1 workflow names should be" -o`
   if [[ $DENY = "All pipeline Stage 1 workflow names should be" ]]
