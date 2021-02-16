@@ -1,3 +1,5 @@
+package harness.pipeline
+
 pipeline = `
 harnessApiVersion: '1.0'
 type: PIPELINE
