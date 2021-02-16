@@ -9,7 +9,7 @@ printf "\n\n"
 IFS=';'
 mapfile -t lines < <(echo "$INPUT_TESTS" | grep -v "^$")
 
-e_code=0
+e_code=1
 for line in "${lines[@]}"; do
   read -r -a args <<< "$line"
 #  cmd="/opa test ${args[@]} $INPUT_OPTIONS"
@@ -17,10 +17,12 @@ for line in "${lines[@]}"; do
   echo " 🚀 Running: $cmd"
   printf "\n"
   #eval "$cmd" || e_code=1
-  export OPA_EVAL=`/opa eval -f values -i ./rego/mypipeline.yaml -d ./rego/check-pipeline.rego "data.harness.pipeline.deny" | grep -P ": true" -o`
-  if [ $OPA_EVAL != ": true" ]
+  export OPA_EVAL=`/opa eval -f values -i ./rego/mypipeline.yaml -d ./rego/check-pipeline.rego "data.harness.pipeline.deny"`
+  echo $OPA_EVAL
+  export ALLOW=`cat $OPA_EVAL | grep -P ": true" -o`
+  if [ $ALLOW = ": true" ]
   then
-      e_code = 1
+      e_code = 0
   fi
   printf "\n\n"
 done
