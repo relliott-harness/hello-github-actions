@@ -19,9 +19,11 @@ for line in "${lines[@]}"; do
   #eval "$cmd" || e_code=1
   export OPA_EVAL=`/opa eval -f values -i ./rego/mypipeline.yaml -d ./rego/check-pipeline.rego "data.harness.pipeline.deny"`
   echo $OPA_EVAL
-  export ALLOW=`echo $OPA_EVAL | grep -P ": true" -o`
-  if [[ $ALLOW = ": true" ]]
+  export DENY=`echo $OPA_EVAL | grep -P "All pipeline Stage 1 workflow names should be" -o`
+  if [[ $DENY = "All pipeline Stage 1 workflow names should be" ]]
   then
+      e_code = 1
+  else
       e_code = 0
   fi
   printf "\n\n"
