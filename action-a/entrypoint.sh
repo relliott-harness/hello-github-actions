@@ -13,7 +13,7 @@ e_code=1
 for line in "${lines[@]}"; do
   read -r -a args <<< "$line"
 #  cmd="/opa test ${args[@]} $INPUT_OPTIONS"
-  cmd="/opa eval -f values -i ./rego/mypipeline.yaml -d ./rego/check-pipeline.rego \"data.harness.pipeline.deny\""
+  cmd="/opa eval -f json -i ./pipelines/opa_deploy_pipeline.yaml -d ./rego/check-pipeline.rego \"data.harness.pipeline.deny\""
   echo " 🚀 Running: $cmd"
   printf "\n"
   export OPA_EVAL=`/opa eval -f json -i ./pipelines/opa_deploy_pipeline.yaml -d ./rego/check-pipeline.rego "data.harness.pipeline.deny"`
