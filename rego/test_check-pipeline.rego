@@ -33,4 +33,6 @@ pipelineStages:
 
 pipeline_yaml = yaml.unmarshal(pipeline)
 
-deny with input as pipeline_yaml
+test_push_allow {
+  deny with input as pipeline_yaml
+}
