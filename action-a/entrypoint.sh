@@ -19,7 +19,7 @@ for line in "${lines[@]}"; do
   #eval "$cmd" || e_code=1
   export OPA_EVAL=`/opa eval -f values -i ./rego/mypipeline.yaml -d ./rego/check-pipeline.rego "data.harness.pipeline.deny"`
   echo $OPA_EVAL
-  export ALLOW=`cat $OPA_EVAL | grep -P ": true" -o`
+  export ALLOW=`echo $OPA_EVAL | grep -P ": true" -o`
   if [ $ALLOW = ": true" ]
   then
       e_code = 0
