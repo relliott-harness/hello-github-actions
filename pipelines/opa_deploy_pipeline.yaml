@@ -1,6 +1,6 @@
 harnessApiVersion: '1.0'
 type: PIPELINE
-description: Example Pipeiline that deploys with OPA Checks
+description: Example Pipeiline with OPA Checks and then deploys
 pipelineStages:
 - type: ENV_STATE
   name: Check OPA Running
