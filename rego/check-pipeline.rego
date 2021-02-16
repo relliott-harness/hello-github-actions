@@ -9,12 +9,10 @@ deny[reason] {
   stage1_workflowName := input.pipelineStages[0].workflowName
   
   # Now the checkfor type = PIPELINE and workflowName != Check OPA
-  #type == "PIPELINE"
-  #stage1_workflowName != "Check OPA"
-  1 != 1
-  
+  type == "PIPELINE"
+  stage1_workflowName != "Check OPA"
+
   # Set the deny message
-  #reason := "All pipelines must have a Stage 1 workflow 'Check OPA' that ensures OPA is running in the target Kubernetes environment."
-  reason := sprintf("type '%v' and stae1_workflowName '%v'",[type,stage1_workflowName])
+  reason := sprintf("All pipeline Stage 1 workflow names should be 'Check OPA' but found ''%v'",[stage1_workflowName])
   
 }
