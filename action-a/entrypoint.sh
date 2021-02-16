@@ -1,7 +1,8 @@
 #!/bin/bash
 
 printf "\n\n"
-echo "# Open Policy Agent"
+echo "# Open Policy Agent on event"
+echo $EVENT_BEFORE
 /opa version
 printf "\n\n"
 
