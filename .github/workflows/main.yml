@@ -1,5 +1,7 @@
 name: A workflow for my Hello World file
 on: push
+  paths:
+    - './pipelines/*.yaml'
 jobs:
   build:
     name: Hello world action
