@@ -13,7 +13,7 @@ e_code=0
 for line in "${lines[@]}"; do
   read -r -a args <<< "$line"
 #  cmd="/opa test ${args[@]} $INPUT_OPTIONS"
-  cmd="opa eval --fail-defined  -i ./rego/mypipeline.json -d ./rego/check-pipeline.rego \"data.harness.pipeline.deny\""
+  cmd="/opa eval --fail-defined  -i ./rego/mypipeline.json -d ./rego/check-pipeline.rego \"data.harness.pipeline.deny\""
   echo " 🚀 Running: $cmd"
   printf "\n"
   eval "$cmd" || e_code=1
