@@ -11,4 +11,6 @@ jobs:
       - uses: ./action-a
         with:
           tests: "./rego"
-          options: "--verbose"  
+          options: "--verbose"
+    env:
+      EVENT_BEFORE: ${{ github.event.before }}
