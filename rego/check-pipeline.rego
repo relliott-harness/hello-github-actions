@@ -13,5 +13,5 @@ deny[reason] {
   stage1_workflowName != "Check OPA"
   
   # Set the deny message
-  reason := "All pipelines must have a Stage 1 workflow "Check OPA" that ensures OPA is running in the target Kubernetes environment."
+  reason := "All pipelines must have a Stage 1 workflow 'Check OPA' that ensures OPA is running in the target Kubernetes environment."
 }
